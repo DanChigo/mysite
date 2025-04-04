@@ -2,7 +2,13 @@
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
-    extend: {},
+  extend: {
+    fontFamily: {
+      'comic': ['"Comic Neue"', 'cursive'],
+      'bangers': ['Bangers', 'cursive'],
+    }
   },
+  },
+
   plugins: [],
 };

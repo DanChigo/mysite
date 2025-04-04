@@ -1,27 +1,260 @@
-import { Github, Linkedin, Mail } from 'lucide-react'
+import React, { useState } from 'react';
+import { 
+  Window, 
+  WindowHeader, 
+  WindowContent, 
+  Button, 
+  Toolbar,
+  AppBar
+} from 'react95';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
 export function Home() {
+  const [windows, setWindows] = useState({
+    welcome: { open: true, minimized: false, zIndex: 4 },
+    about: { open: true, minimized: false, zIndex: 3 },
+    projects: { open: true, minimized: false, zIndex: 2 },
+  });
+
+  const toggleWindow = (name) => {
+    setWindows({
+      ...windows,
+      [name]: { 
+        ...windows[name], 
+        open: !windows[name].open,
+        minimized: false
+      }
+    });
+  };
+
+  const minimizeWindow = (name) => {
+    setWindows({
+      ...windows,
+      [name]: { 
+        ...windows[name], 
+        minimized: !windows[name].minimized 
+      }
+    });
+  };
+
+  const bringToFront = (name) => {
+    const maxZ = Math.max(...Object.values(windows).map(w => w.zIndex));
+    setWindows({
+      ...windows,
+      [name]: { 
+        ...windows[name], 
+        zIndex: maxZ + 1 
+      }
+    });
+  };
+
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold text-gray-900 sm:text-5xl md:text-6xl">
-          Hi, I'm Danielle
-        </h1>
-        <p className="mt-3 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
-          Software Engineer passionate about building innovative solutions
-        </p>
-        <div className="mt-5 max-w-md mx-auto flex justify-center space-x-4">
-          <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gray-500">
-            <Github size={24} />
-          </a>
-          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gray-500">
-            <Linkedin size={24} />
-          </a>
-          <a href="mailto:example@email.com" className="text-gray-400 hover:text-gray-500">
-            <Mail size={24} />
-          </a>
+    <div className="h-screen w-full overflow-hidden relative bg-[url('/photos/IMG_0400.JPG')] bg-cover bg-center">
+      {/* Desktop Icons */}
+      <div className="fixed top-20 left-4 flex flex-col">
+        <div 
+          className="flex flex-col items-center mb-4 cursor-pointer"
+          onClick={() => {
+            toggleWindow('about');
+            bringToFront('about');
+          }}
+        >
+          <div className="w-9 h-9 bg-white border-2 border-black flex items-center justify-center mb-1">
+            <span>A</span>
+          </div>
+          <div className="text-white text-xs shadow-sm bg-blue-900 bg-opacity-70 px-1">
+            About
+          </div>
         </div>
+
+        <div 
+          className="flex flex-col items-center mb-4 cursor-pointer"
+          onClick={() => {
+            toggleWindow('projects');
+            bringToFront('projects');
+          }}
+        >
+          <div className="w-9 h-9 bg-white border-2 border-black flex items-center justify-center mb-1">
+            <span>P</span>
+          </div>
+          <div className="text-white text-xs shadow-sm bg-blue-900 bg-opacity-70 px-1">
+            Projects
+          </div>
+        </div>
+
+
+        <Link to="/blog" className="flex flex-col items-center mb-4 no-underline">
+          <div className="w-9 h-9 bg-white border-2 border-black flex items-center justify-center mb-1">
+            <span>B</span>
+          </div>
+          <div className="text-white text-xs shadow-sm bg-blue-900 bg-opacity-70 px-1">
+            Blog
+          </div>
+        </Link>
       </div>
+
+      {/* Welcome Window */}
+      {windows.welcome.open && !windows.welcome.minimized && (
+        <Window 
+          style={{ 
+            width: 600, 
+            height: 400,
+            position: 'absolute', 
+            top: '50%', 
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            zIndex: windows.welcome.zIndex
+          }}
+          onClick={() => bringToFront('welcome')}
+        >
+          <WindowHeader active style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <span>Welcome to DanielleOS</span>
+            <div>
+            <Button onClick={() => toggleWindow('about')}>
+              <span className="close-icon"></span>
+            </Button>
+            </div>
+          </WindowHeader>
+          <WindowContent>
+            <div className="text-center p-6">
+              <h1 className="text-2xl font-bold mb-3">
+                Danielle Ejiogu
+              </h1>
+              <p className="text-lg mb-3">Software Engineer</p>
+              <p className="italic mb-8">
+                Passionate about building innovative solutions
+              </p>
+              <Button onClick={() => toggleWindow('welcome')}>OK</Button>
+            </div>
+          </WindowContent>
+        </Window>
+      )}
+
+      {/* About Window */}
+      {windows.about.open && !windows.about.minimized && (
+        <Window 
+          style={{ 
+            width: 500, 
+            height: 300,
+            position: 'absolute', 
+            top: 150, 
+            left: 400,
+            zIndex: windows.about.zIndex
+          }}
+          onClick={() => bringToFront('about')}
+        >
+          <WindowHeader style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <span>About Me</span>
+            <div>
+            <Button onClick={() => minimizeWindow('about')}>
+              <span className="close-icon"></span>
+            </Button>
+            </div>
+          </WindowHeader>
+          <WindowContent>
+            <p className="mb-3">
+              Full-stack developer with a passion for creating user-friendly applications and solving complex problems.
+            </p>
+            <p className="font-bold mb-2">Skills:</p>
+            <div className="grid grid-cols-2 gap-1 mb-4">
+              <Button size="sm" style={{ fontSize: '12px' }}>JavaScript</Button>
+              <Button size="sm" style={{ fontSize: '12px' }}>React</Button>
+              <Button size="sm" style={{ fontSize: '12px' }}>TypeScript</Button>
+              <Button size="sm" style={{ fontSize: '12px' }}>Node.js</Button>
+              <Button size="sm" style={{ fontSize: '12px' }}>Scala</Button>
+            </div>
+            <div className="flex justify-end">
+              <Link to="/about">
+                <Button>Learn More →</Button>
+              </Link>
+            </div>
+          </WindowContent>
+        </Window>
+      )}
+
+      {/* Projects Window */}
+      {windows.projects.open && !windows.projects.minimized && (
+        <Window 
+          style={{ 
+            width: 380, 
+            position: 'absolute', 
+            top: 150, 
+            right: 100,
+            zIndex: windows.projects.zIndex
+          }}
+          onClick={() => bringToFront('projects')}
+        >
+          <WindowHeader style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <span>My Projects</span>
+            <div>
+            <Button onClick={() => minimizeWindow('projects')}>
+              <span className="close-icon"></span>
+            </Button>
+            </div>
+          </WindowHeader>
+          <WindowContent>
+            <div className="grid grid-cols-2 gap-3 mb-4">
+              <div>
+                <p className="font-bold mb-1">Project A</p>
+                <div className="w-full h-20 bg-gray-300 flex items-center justify-center border border-black">
+                  [Preview]
+                </div>
+              </div>
+              <div>
+                <p className="font-bold mb-1">Project B</p>
+                <div className="w-full h-20 bg-gray-300 flex items-center justify-center border border-black">
+                  [Preview]
+                </div>
+              </div>
+            </div>
+            <p className="mb-4">
+              Check out my latest projects, from web applications to innovative software solutions.
+            </p>
+            <div className="flex justify-end">
+              <Link to="/projects">
+                <Button>View All Projects →</Button>
+              </Link>
+            </div>
+          </WindowContent>
+        </Window>
+      )}
+
+      {/* AppBar at bottom */}
+      <AppBar style={{ position: 'fixed', bottom: 0, top: 'auto' }}>
+        <Toolbar style={{ justifyContent: 'space-between' }}>
+          <div className="flex items-center">
+            <Button style={{ fontWeight: 'bold', marginRight: '4px' }}>
+              Start
+            </Button>
+            {Object.entries(windows).map(([name, { open }]) => (
+              open && (
+                <Button 
+                  key={name}
+                  active={!windows[name].minimized}
+                  onClick={() => {
+                    if (windows[name].minimized) {
+                      minimizeWindow(name);
+                      bringToFront(name);
+                    } else {
+                      minimizeWindow(name);
+                    }
+                  }}
+                  style={{ fontSize: '12px', marginRight: '4px' }}
+                >
+                  {name === 'welcome' ? 'Welcome' : 
+                   name === 'about' ? 'About Me' : 
+                   name === 'projects' ? 'My Projects' : 
+                   'Connect With Me'}
+                </Button>
+              )
+            ))}
+          </div>
+          <div className="text-xs">
+            {new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit', hour12: true})}
+          </div>
+        </Toolbar>
+      </AppBar>
     </div>
-  )
+  );
 }
