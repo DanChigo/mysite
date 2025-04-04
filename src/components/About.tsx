@@ -167,7 +167,7 @@ const AboutPage = () => {
       <div className="absolute bottom-4 right-4">
         <img 
           src="/photos/strawberry.gif" 
-          alt="PMM"></img>
+          alt="strawberry"></img>
         </div>
     </div>
   );
