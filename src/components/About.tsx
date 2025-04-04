@@ -30,13 +30,13 @@ const AboutPage = () => {
     <div className="min-h-screen bg-[url('/photos/paper.png')] bg-cover bg-center p-4 flex items-center justify-center">
         <div className="absolute top-24 left-4">
             <img 
-                src="/photos/mushroom.gif" 
+                src="./photos/mushroom.gif" 
                 alt="PMM"
             />
         </div>
         <div className="absolute mid top-1/2 left-10">
             <img 
-                src="/photos/girll.gif" 
+                src="./photos/girll.gif" 
                 alt="PMM"
             />
         </div>
@@ -62,12 +62,12 @@ const AboutPage = () => {
               <div className="col-span-1">
                 <InfoBox>
                   <img 
-                    src="/photos/dani.JPG" 
+                    src="./photos/dani.JPG" 
                     alt="Character avatar" 
                     className="w-full"
                   />
-                  <img src="/photos/dani3.JPG" alt="Character avatar" className="w-full mt-2" />
-                  <img src="/photos/dani4.JPG" alt="Character avatar" className="w-full mt-2" />
+                  <img src="./photos/dani3.JPG" alt="Character avatar" className="w-full mt-2" />
+                  <img src="./photos/dani4.JPG" alt="Character avatar" className="w-full mt-2" />
                 </InfoBox>
               </div>
               
@@ -166,7 +166,7 @@ const AboutPage = () => {
       </div>
       <div className="absolute bottom-4 right-4">
         <img 
-          src="/photos/strawberry.gif" 
+          src="./photos/strawberry.gif" 
           alt="strawberry"></img>
         </div>
     </div>
