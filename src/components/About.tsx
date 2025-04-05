@@ -7,6 +7,15 @@ import {
 } from 'react95';
 import styled from 'styled-components';
 
+// Import all images
+import paperBackground from '../assets/photos/paper.png';
+import mushroomGif from '../assets/photos/mushroom.gif';
+import girllGif from '../assets/photos/girll.gif';
+import daniImage from '../assets/photos/dani.JPG';
+import dani3Image from '../assets/photos/dani3.JPG';
+import dani4Image from '../assets/photos/dani4.JPG';
+import strawberryGif from '../assets/photos/strawberry.gif';
+
 // Styled window component with 3D border effect
 const StyledWindow = styled(Window)`
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
@@ -27,16 +36,19 @@ const InfoBox = styled.div`
 
 const AboutPage = () => {
   return (
-    <div className="min-h-screen bg-[url('/photos/paper.png')] bg-cover bg-center p-4 flex items-center justify-center">
+    <div 
+      className="min-h-screen bg-cover bg-center p-4 flex items-center justify-center" 
+      style={{ backgroundImage: `url(${paperBackground})` }}
+    >
         <div className="absolute top-24 left-4">
             <img 
-                src="./photos/mushroom.gif" 
+                src={mushroomGif} 
                 alt="PMM"
             />
         </div>
         <div className="absolute mid top-1/2 left-10">
             <img 
-                src="./photos/girll.gif" 
+                src={girllGif} 
                 alt="PMM"
             />
         </div>
@@ -62,12 +74,12 @@ const AboutPage = () => {
               <div className="col-span-1">
                 <InfoBox>
                   <img 
-                    src="./photos/dani.JPG" 
+                    src={daniImage} 
                     alt="Character avatar" 
                     className="w-full"
                   />
-                  <img src="./photos/dani3.JPG" alt="Character avatar" className="w-full mt-2" />
-                  <img src="./photos/dani4.JPG" alt="Character avatar" className="w-full mt-2" />
+                  <img src={dani3Image} alt="Character avatar" className="w-full mt-2" />
+                  <img src={dani4Image} alt="Character avatar" className="w-full mt-2" />
                 </InfoBox>
               </div>
               
@@ -166,9 +178,10 @@ const AboutPage = () => {
       </div>
       <div className="absolute bottom-4 right-4">
         <img 
-          src="./photos/strawberry.gif" 
-          alt="strawberry"></img>
-        </div>
+          src={strawberryGif} 
+          alt="strawberry"
+        />
+      </div>
     </div>
   );
 };

@@ -5,6 +5,10 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   base: './',
   plugins: [react()],
+  assetsInclude: ['**/*.JPG', '**/*.gif', '**/*.png', '**/*.jpg'],
+  resolve: {
+    extensions: ['.js', '.jsx', '.ts', '.tsx', '.json']
+  },
   optimizeDeps: {
     exclude: ['lucide-react'],
   },

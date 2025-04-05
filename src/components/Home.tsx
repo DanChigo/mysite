@@ -9,6 +9,8 @@ import {
 } from 'react95';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import backgroundImage from '../assets/photos/IMG_0400.JPG';
+
 
 export function Home() {
   const [windows, setWindows] = useState({
@@ -50,7 +52,9 @@ export function Home() {
   };
 
   return (
-    <div className="h-screen w-full overflow-hidden relative bg-[url('/photos/IMG_0400.JPG')] bg-cover bg-center">
+    <div className="h-screen w-full overflow-hidden relative bg-cover bg-center
+    "
+    style={{ backgroundImage: `url(${backgroundImage})` }}>
       {/* Desktop Icons */}
       <div className="fixed top-20 left-4 flex flex-col">
         <div 
