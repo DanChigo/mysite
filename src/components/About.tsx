@@ -115,7 +115,7 @@ const AboutPage = () => {
                 <InfoBox>
                   <p className="mb-4">
                     Hi!!! I assume you're here because I put this link in a job application.
-                    I really really really want a job. I'm a rising senior at Purdue University with a passion for
+                    I'm looking for industry experience after an exciting summer of research in Hawaii. I'm a rising senior at Purdue University with a passion for
                     interdisciplinary problem solving. I thrive in collaborative environments and love researching!
                     I have experience in full-stack development, data science, and machine learning.
                   </p>
