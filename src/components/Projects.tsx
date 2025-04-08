@@ -63,8 +63,8 @@ const ProjectsPage = () => {
   // Project data
   const projects = [
     {
-      id: 'project1',
-      title: 'Project A',
+      id: 'Project oCEANIC',
+      title: 'Project oCEANIC: Computing Environmental Adaptation and Navigation ​in Island Communities',
       description: 'This is a full-stack web application built with React and Node.js.',
       image: '/api/placeholder/500/300', // Replace with your project image
       link: '#',

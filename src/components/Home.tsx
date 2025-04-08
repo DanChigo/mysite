@@ -9,7 +9,9 @@ import {
 } from 'react95';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import oceanic from '../assets/photos/oceanic.png';
 import backgroundImage from '../assets/photos/IMG_0400.JPG';
+import dpsgd from '../assets/photos/average_percent_difference.png';
 import {FolderOpen, InfoBubble, Write1} from '@react95/icons';
 
 
@@ -203,13 +205,13 @@ export function Home() {
               <div>
                 <p className="font-bold mb-1">Computational Model of Yapese Navigation</p>
                 <div className="w-full h-20 bg-gray-300 flex items-center justify-center border border-black">
-                  [Preview]
+                  <img src={oceanic}/>
                 </div>
               </div>
               <div>
                 <p className="font-bold mb-1">Architechural Optimizations for DP-SGD</p>
                 <div className="w-full h-20 bg-gray-300 flex items-center justify-center border border-black">
-                  [Preview]
+                  <img src={dpsgd}/>
                 </div>
               </div>
             </div>
