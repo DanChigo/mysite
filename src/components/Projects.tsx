@@ -5,6 +5,7 @@ import {
   WindowContent,
   Button
 } from 'react95';
+import folder from '@react95/icons'
 import styled from 'styled-components';
 
 // Styled window component with 3D border effect

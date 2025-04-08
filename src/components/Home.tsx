@@ -10,6 +10,7 @@ import {
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import backgroundImage from '../assets/photos/IMG_0400.JPG';
+import {FolderOpen, InfoBubble, Write1} from '@react95/icons';
 
 
 export function Home() {
@@ -64,8 +65,8 @@ export function Home() {
             bringToFront('about');
           }}
         >
-          <div className="w-9 h-9 bg-white border-2 border-black flex items-center justify-center mb-1">
-            <span>A</span>
+          <div className="w-9 h-9 flex items-center justify-center mb-1">
+            <InfoBubble variant="32x32_4"/>
           </div>
           <div className="text-white text-xs shadow-sm bg-blue-900 bg-opacity-70 px-1">
             About
@@ -79,8 +80,8 @@ export function Home() {
             bringToFront('projects');
           }}
         >
-          <div className="w-9 h-9 bg-white border-2 border-black flex items-center justify-center mb-1">
-            <span>P</span>
+          <div className="w-9 h-9 flex items-center justify-center mb-1">
+            <FolderOpen variant="32x32_4"/>
           </div>
           <div className="text-white text-xs shadow-sm bg-blue-900 bg-opacity-70 px-1">
             Projects
@@ -89,8 +90,8 @@ export function Home() {
 
 
         <Link to="/blog" className="flex flex-col items-center mb-4 no-underline">
-          <div className="w-9 h-9 bg-white border-2 border-black flex items-center justify-center mb-1">
-            <span>B</span>
+          <div className="w-9 h-9 flex items-center justify-center mb-1">
+          <Write1 variant="32x32_4"/>
           </div>
           <div className="text-white text-xs shadow-sm bg-blue-900 bg-opacity-70 px-1">
             Blog
@@ -125,9 +126,9 @@ export function Home() {
               <h1 className="text-2xl font-bold mb-3">
                 Danielle Ejiogu
               </h1>
-              <p className="text-lg mb-3">Software Engineer</p>
+              <p className="text-lg mb-3">Aspiring Software Engineer</p>
               <p className="italic mb-8">
-                Passionate about building innovative solutions
+                Full-Time Student, Nostalgia Fetishist, and Research Assistant
               </p>
               <Button onClick={() => toggleWindow('welcome')}>OK</Button>
             </div>
@@ -200,13 +201,13 @@ export function Home() {
           <WindowContent>
             <div className="grid grid-cols-2 gap-3 mb-4">
               <div>
-                <p className="font-bold mb-1">Project A</p>
+                <p className="font-bold mb-1">Computational Model of Yapese Navigation</p>
                 <div className="w-full h-20 bg-gray-300 flex items-center justify-center border border-black">
                   [Preview]
                 </div>
               </div>
               <div>
-                <p className="font-bold mb-1">Project B</p>
+                <p className="font-bold mb-1">Architechural Optimizations for DP-SGD</p>
                 <div className="w-full h-20 bg-gray-300 flex items-center justify-center border border-black">
                   [Preview]
                 </div>
