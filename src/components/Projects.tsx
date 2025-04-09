@@ -66,27 +66,27 @@ const ProjectsPage = () => {
   const projects = [
     {
       id: 'Project oCEANIC',
-      title: 'Project A',
+      title: 'Project oceanic: Computing Environmental Adaptation and Navigation ​in Island Communities',
       description: 'This is a full-stack web application built with React and Node.js.',
       image: '/api/placeholder/500/300', // Replace with your project image
       link: '#',
-      technologies: ['React', 'Node.js', 'MongoDB']
+      technologies: ['React', 'Node.js', 'Flask', 'Python', 'MERRA-2', 'ARCGIS']
     },
     {
       id: 'DP-SGD Optimization',
-      title: 'Project B',
+      title: 'GPU Architectural Optimizations for Differentially Private Stochastic Gradient Descent ',
       description: 'A machine learning project focused on balancing privacy with performance.',
       image: '/api/placeholder/500/300',
       link: '#',
       technologies: ['PyTorch', 'Accel-Sim', 'C++']
     },
     {
-      id: 'project3',
+      id: 'Tracking Politicians Stocks',
       title: 'Project C',
       description: 'Mobile app developed for Android and iOS platforms.',
       image: '/api/placeholder/500/300',
       link: '#',
-      technologies: ['React Native', 'Firebase']
+      technologies: ['Python', 'Firebase']
     },
     {
       id: 'project4',

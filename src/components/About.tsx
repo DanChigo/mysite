@@ -92,7 +92,7 @@ const AboutPage = () => {
                   </InfoBox>
                   
                   <InfoBox>
-                    <LabelText>AGE:</LabelText> 20s
+                    <LabelText>AGE:</LabelText> 20
                   </InfoBox>
                   
                   <InfoBox>
@@ -127,8 +127,8 @@ const AboutPage = () => {
                   
                   <p>
                     I made this site to host my creative projects and showcase my skills. 
-                    You can find my GitHub repo <a 
-                      href="#" 
+                    You can find my GitHub Profile <a 
+                      href="https://github.com/DanChigo" 
                       className="text-indigo-600 no-underline hover:underline"
                     >here</a>.
                   </p>
