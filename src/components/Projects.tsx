@@ -7,6 +7,8 @@ import {
 } from 'react95';
 import folder from '@react95/icons'
 import styled from 'styled-components';
+import {FolderOpen, InfoBubble, Pbrush1, ReaderCd, HardwareDiag ,Notepad, Progman20} from '@react95/icons';
+import { Info } from 'lucide-react';
 
 // Styled window component with 3D border effect
 const StyledWindow = styled(Window)`
@@ -64,19 +66,19 @@ const ProjectsPage = () => {
   const projects = [
     {
       id: 'Project oCEANIC',
-      title: 'Project oCEANIC: Computing Environmental Adaptation and Navigation ​in Island Communities',
+      title: 'Project A',
       description: 'This is a full-stack web application built with React and Node.js.',
       image: '/api/placeholder/500/300', // Replace with your project image
       link: '#',
       technologies: ['React', 'Node.js', 'MongoDB']
     },
     {
-      id: 'project2',
+      id: 'DP-SGD Optimization',
       title: 'Project B',
-      description: 'A machine learning project focused on natural language processing.',
+      description: 'A machine learning project focused on balancing privacy with performance.',
       image: '/api/placeholder/500/300',
       link: '#',
-      technologies: ['Python', 'TensorFlow', 'NLTK']
+      technologies: ['PyTorch', 'Accel-Sim', 'C++']
     },
     {
       id: 'project3',
@@ -114,12 +116,12 @@ const ProjectsPage = () => {
 
   // Windows 98 icons
   const tempIcons = {
-    'project1': 'https://win98icons.alexmeub.com/icons/png/notepad-1.png',
-    'project2': 'https://win98icons.alexmeub.com/icons/png/msie1-2.png',
-    'project3': 'https://win98icons.alexmeub.com/icons/png/winamp-1.png',
-    'project4': 'https://win98icons.alexmeub.com/icons/png/paint_old-0.png',
-    'project5': 'https://win98icons.alexmeub.com/icons/png/cd_drive-4.png',
-    'project6': 'https://win98icons.alexmeub.com/icons/png/console_prompt-0.png',
+    'Project oCEANIC': <Notepad variant="32x32_4" />,
+    'DP-SGD Optimization': <HardwareDiag variant="32x32_4" />,
+    'project3': <Progman20 variant="32x32_4" />,
+    'project4': <Pbrush1 variant="32x32_4" />,
+    'project5': <ReaderCd variant="32x32_4" />,
+    'project6': <InfoBubble variant="32x32_4" />,
   };
 
   return (
@@ -133,12 +135,8 @@ const ProjectsPage = () => {
                 key={project.id}
                 onClick={() => setOpenProject(project.id)}
                 >
-                <IconImage 
-                    className="icon-image"
-                    src={tempIcons[project.id]} 
-                    alt={project.title}
-                />
-                <IconLabel>{project.title}</IconLabel>
+                <div>{tempIcons[project.id]}</div>
+                <IconLabel>{project.id}</IconLabel>
                 </DesktopIcon>
             ))}
             </div>
