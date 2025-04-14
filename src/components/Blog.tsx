@@ -67,7 +67,7 @@ const Blog = () => {
             </Button>
             </WindowHeader>
             <WindowContent className=''>
-              <ScrollView className='w-[200px] h-[310px] bg-slate-100'>
+              <ScrollView className='w-[200px] h-[260px] bg-slate-100'>
               <MenuList>
                     {blogPosts.map((post, index) => (
                       <div key={index}>
@@ -101,7 +101,7 @@ const Blog = () => {
             </Button>
             </WindowHeader>
             <WindowContent className='flex justify-center items-center'>
-              <div className='h-[600px] w-[600px] bg-pink-400'>
+              <div className='h-[400px] w-[600px] bg-pink-400'>
               <p>Under construction</p>
               </div>
             </WindowContent>
