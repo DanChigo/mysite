@@ -1,4 +1,5 @@
 import React from 'react';
+import Navbar from './Navbar';
 import { 
   Window, 
   WindowHeader, 
@@ -36,6 +37,9 @@ const InfoBox = styled.div`
 
 const AboutPage = () => {
   return (
+    <>
+    <Navbar/>
+    {/* Background and layout */}
     <div 
       className="min-h-screen bg-cover bg-center p-4 flex items-center justify-center" 
       style={{ backgroundImage: `url(${paperBackground})` }}
@@ -183,6 +187,7 @@ const AboutPage = () => {
         />
       </div>
     </div>
+    </>
   );
 };
 

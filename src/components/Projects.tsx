@@ -5,11 +5,12 @@ import {
   WindowContent,
   Button
 } from 'react95';
+import Navbar from './Navbar'
 import folder from '@react95/icons'
 import styled from 'styled-components';
 import {FolderOpen, InfoBubble, Pbrush1, ReaderCd, HardwareDiag ,Notepad, Progman20} from '@react95/icons';
 import { Info } from 'lucide-react';
-
+import dpsgd from '../assets/photos/average_percent_difference.png';
 // Styled window component with 3D border effect
 const StyledWindow = styled(Window)`
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
@@ -31,13 +32,6 @@ const DesktopIcon = styled.div`
   &:active .icon-image {
     transform: scale(0.95);
   }
-`;
-
-const IconImage = styled.img`
-  width: 32px;
-  height: 32px;
-  margin-bottom: 4px;
-  transition: transform 0.1s;
 `;
 
 const IconLabel = styled.div`
@@ -76,12 +70,12 @@ const ProjectsPage = () => {
       id: 'DP-SGD Optimization',
       title: 'GPU Architectural Optimizations for Differentially Private Stochastic Gradient Descent ',
       description: 'A machine learning project focused on balancing privacy with performance.',
-      image: '/api/placeholder/500/300',
+      image: dpsgd,
       link: '#',
       technologies: ['PyTorch', 'Accel-Sim', 'C++']
     },
     {
-      id: 'Tracking Politicians Stocks',
+      id: 'Stock Tracker',
       title: 'Project C',
       description: 'Mobile app developed for Android and iOS platforms.',
       image: '/api/placeholder/500/300',
@@ -89,7 +83,7 @@ const ProjectsPage = () => {
       technologies: ['Python', 'Firebase']
     },
     {
-      id: 'project4',
+      id: 'MiniScala Compiler',
       title: 'Project D',
       description: 'Data visualization dashboard for analyzing historical data.',
       image: '/api/placeholder/500/300',
@@ -118,14 +112,15 @@ const ProjectsPage = () => {
   const tempIcons = {
     'Project oCEANIC': <Notepad variant="32x32_4" />,
     'DP-SGD Optimization': <HardwareDiag variant="32x32_4" />,
-    'project3': <Progman20 variant="32x32_4" />,
-    'project4': <Pbrush1 variant="32x32_4" />,
+    'Stock Tracker': <Progman20 variant="32x32_4" />,
+    'MiniScala Compiler': <Pbrush1 variant="32x32_4" />,
     'project5': <ReaderCd variant="32x32_4" />,
     'project6': <InfoBubble variant="32x32_4" />,
   };
 
   return (
     <div className="h-screen w-full flex flex-col overflow-hidden">
+      <Navbar /> {/* Navbar component */}
       {/* Projects "desktop" */}
       <DesktopContainer>
         {/* Project Icons - displayed in a row at the top */}

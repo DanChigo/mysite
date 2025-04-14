@@ -7,6 +7,7 @@ import {
   Toolbar,
   AppBar
 } from 'react95';
+import Navbar from './Navbar';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import oceanic from '../assets/photos/oceanic.png';
@@ -55,6 +56,9 @@ export function Home() {
   };
 
   return (
+    <>
+    <Navbar/>
+    {/* Background and layout */}
     <div className="h-screen w-full overflow-hidden relative bg-cover bg-center
     "
     style={{ backgroundImage: `url(${backgroundImage})` }}>
@@ -263,5 +267,6 @@ export function Home() {
         </Toolbar>
       </AppBar>
     </div>
+    </>
   );
 }
