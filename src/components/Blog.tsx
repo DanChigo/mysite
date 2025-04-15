@@ -101,9 +101,11 @@ const Blog = () => {
             </Button>
             </WindowHeader>
             <WindowContent className='flex justify-center items-center'>
+              <Frame>
               <div className='h-[400px] w-[600px] bg-pink-400'>
               <p>Under construction</p>
               </div>
+              </Frame>
             </WindowContent>
           </Window>
         </div>
