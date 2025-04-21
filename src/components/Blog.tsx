@@ -1,8 +1,7 @@
 import {useEffect, useState} from 'react';
-import {Window, WindowHeader, WindowContent, ScrollView, Button, Frame, MenuList, MenuListItem, Separator } from 'react95';
+import {Window, WindowHeader, WindowContent, Toolbar, ScrollView, Button, Frame, MenuList, MenuListItem, Separator } from 'react95';
 import cheetah from '../assets/photos/lep.png';
-import Navbar from './Navbar'
-import styled from 'styled-components';
+import Navbar from './Navbar';
 
 const Blog = () => {
   const [selectedPost, setSelectedPost] = useState<{
@@ -67,23 +66,24 @@ const Blog = () => {
             </Button>
             </WindowHeader>
             <WindowContent className=''>
-              <ScrollView className='w-[200px] h-[260px] bg-slate-100'>
+              <ScrollView className='w-[190px] h-[260px] bg-slate-100 p-2'>
               <MenuList>
                     {blogPosts.map((post, index) => (
-                      <div key={index}>
+                      <div key={index} className="mb-4 mt-3">
                         <MenuListItem 
                           onClick={() => setSelectedPost(post)}
                           style={{
-                            width: '145px',
+                            width: '138px',
+                            padding: '8px',
                             backgroundColor: selectedPost === post ? '#c3c7cb' : 'transparent',
                           }}
                         >
-                          <div className="flex flex-col">
+                          <div className="flex flex-col w-full">
                             <span className="font-bold">{post.title}</span>
-                            <span className="text-xs">{post.date}</span>
+                            <span className="text-[10px]">{post.date}</span>
                           </div>
                         </MenuListItem>
-                        {index < blogPosts.length - 1 && <Separator />}
+                        {index < blogPosts.length - 1 && <Separator style={{ margin: '4px 0' }} />}
                       </div>
                     ))}
                   </MenuList>
@@ -95,14 +95,49 @@ const Blog = () => {
         
         <div className= "flex-[2] mt-12">
         <Window className='w-[700px] h-full flex items-center justify-center'>
-            <WindowHeader className='flex gap-0.5 flex-row items-center justify-between'>Blog
+            <WindowHeader className='flex gap-0.5 flex-row items-center justify-between'>
+              Blog
             <Button className='w-1 h-1'>
               <span className="close-icon"></span>
             </Button>
             </WindowHeader>
+
+            <Toolbar>
+              <Button variant="menu" size="sm">
+                {`File`.split(' ').map((word, index) => (
+                  <span key={index}>
+                    <span style={{ textDecoration: 'underline' }}>{word[0]}</span>
+                    {word.slice(1)}{' '}
+                  </span>
+                ))}
+              </Button>
+              <Button variant="menu" size="sm">
+              {`Edit`.split(' ').map((word, index) => (
+                  <span key={index}>
+                    <span style={{ textDecoration: 'underline' }}>{word[0]}</span>
+                    {word.slice(1)}{' '}
+                  </span>
+                ))}
+              </Button>
+              <Button variant="menu" size="sm">    {`View`.split(' ').map((word, index) => (
+                  <span key={index}>
+                    <span style={{ textDecoration: 'underline' }}>{word[0]}</span>
+                    {word.slice(1)}{' '}
+                  </span>
+                ))}</Button>
+              <Button variant="menu" size="sm">
+              {`Help`.split(' ').map((word, index) => (
+                  <span key={index}>
+                    <span style={{ textDecoration: 'underline' }}>{word[0]}</span>
+                    {word.slice(1)}{' '}
+                  </span>
+                ))}
+              </Button>
+            </Toolbar>
+
             <WindowContent className='flex justify-center items-center'>
               <Frame>
-              <div className='h-[500px] w-[600px] bg-pink-400'>
+              <div className='h-[500px] w-[650px] bg-slate-100'>
               <p>Under construction</p>
               </div>
               </Frame>
