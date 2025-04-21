@@ -16,6 +16,8 @@ import daniImage from '../assets/photos/dani.JPG';
 import dani3Image from '../assets/photos/dani3.JPG';
 import dani4Image from '../assets/photos/dani4.JPG';
 import strawberryGif from '../assets/photos/strawberry.gif';
+import x from '../assets/photos/x.png';
+import maximize from '../assets/photos/maximize.png';
 
 // Styled window component with 3D border effect
 const StyledWindow = styled(Window)`
@@ -67,9 +69,17 @@ const AboutPage = () => {
             padding: '4px 8px'
           }}>
             <span>#ABOUT ME</span>
-            <Button style={{ marginLeft: 'auto' }}>
-              <span className="close-icon"></span>
+            <div className='flex space-x-1'>
+            <Button
+              style={{ width: '25px', height: '25px' }}>
+              <img src={maximize} alt="Maximize" className="w-4 h-4" />
             </Button>
+            <Button 
+              style ={{ width: '25px', height: '25px' }}
+              >
+              <img src={x} alt="Close" className="w-4 h-4" />
+            </Button>
+            </div>
           </WindowHeader>
           
           <WindowContent className="bg-[#FFFAF0] p-4">
@@ -152,9 +162,17 @@ const AboutPage = () => {
             padding: '4px 8px'
           }}>
             <span>#INTERESTS</span>
-            <Button style={{ marginLeft: 'auto' }}>
-              <span className='close-icon'></span>
+            <div className='flex space-x-1'>
+            <Button
+              style={{ width: '25px', height: '25px' }}>
+              <img src={maximize} alt="Maximize" className="w-4 h-4" />
             </Button>
+            <Button 
+              style ={{ width: '25px', height: '25px' }}
+              >
+              <img src={x} alt="Close" className="w-4 h-4" />
+            </Button>
+            </div>
           </WindowHeader>
           
           <WindowContent className="bg-[#FFFAF0] p-4">

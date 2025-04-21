@@ -13,6 +13,8 @@ import styled from 'styled-components';
 import oceanic from '../assets/photos/oceanic.png';
 import backgroundImage from '../assets/photos/IMG_0400.JPG';
 import dpsgd from '../assets/photos/average_percent_difference.png';
+import x from '../assets/photos/x.png';
+import maximize from '../assets/photos/maximize.png';
 import {FolderOpen, InfoBubble, Write1} from '@react95/icons';
 
 
@@ -122,9 +124,17 @@ export function Home() {
           <WindowHeader active style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <span>Welcome to DanielleOS</span>
             <div>
-            <Button onClick={() => toggleWindow('about')}>
-              <span className="close-icon"></span>
+            <div className='flex space-x-1'>
+            <Button
+              style={{ width: '25px', height: '25px' }}>
+              <img src={maximize} alt="Maximize" className="w-4 h-4" />
             </Button>
+            <Button 
+              style ={{ width: '25px', height: '25px' }}
+              >
+              <img src={x} alt="Close" className="w-4 h-4" />
+            </Button>
+            </div>
             </div>
           </WindowHeader>
           <WindowContent>
@@ -136,7 +146,10 @@ export function Home() {
               <p className="italic mb-8">
                 Full-Time Student, Nostalgia Fetishist, and Research Assistant
               </p>
-              <Button onClick={() => toggleWindow('welcome')}>OK</Button>
+              <Link to="/blog">
+              <Button>Read More
+              </Button>
+              </Link>
             </div>
           </WindowContent>
         </Window>
@@ -157,11 +170,17 @@ export function Home() {
         >
           <WindowHeader style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <span>About Me</span>
-            <div>
-            <Button onClick={() => minimizeWindow('about')}>
-              <span className="close-icon"></span>
-            </Button>
-            </div>
+                        <div className='flex space-x-1'>
+                        <Button
+                          style={{ width: '25px', height: '25px' }}>
+                          <img src={maximize} alt="Maximize" className="w-4 h-4" />
+                        </Button>
+                        <Button 
+                          style ={{ width: '25px', height: '25px' }}
+                          >
+                          <img src={x} alt="Close" className="w-4 h-4" />
+                        </Button>
+                        </div>
           </WindowHeader>
           <WindowContent>
             <p className="mb-3">
@@ -176,7 +195,7 @@ export function Home() {
               <Button size="sm" style={{ fontSize: '12px' }}>Scala</Button>
             </div>
             <div className="flex justify-end">
-              <Link to="/about">
+              <Link to="/projects">
                 <Button>Learn More →</Button>
               </Link>
             </div>
@@ -198,9 +217,15 @@ export function Home() {
         >
           <WindowHeader style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <span>My Projects</span>
-            <div>
-            <Button onClick={() => minimizeWindow('projects')}>
-              <span className="close-icon"></span>
+            <div className='flex space-x-1'>
+            <Button
+              style={{ width: '25px', height: '25px' }}>
+              <img src={maximize} alt="Maximize" className="w-4 h-4" />
+            </Button>
+            <Button 
+              style ={{ width: '25px', height: '25px' }}
+              >
+              <img src={x} alt="Close" className="w-4 h-4" />
             </Button>
             </div>
           </WindowHeader>

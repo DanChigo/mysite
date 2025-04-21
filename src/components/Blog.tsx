@@ -1,6 +1,8 @@
 import {useEffect, useState} from 'react';
 import {Window, WindowHeader, WindowContent, Toolbar, ScrollView, Button, Frame, MenuList, MenuListItem, Separator } from 'react95';
 import cheetah from '../assets/photos/lep.png';
+import x from '../assets/photos/x.png';
+import maximize from '../assets/photos/maximize.png';
 import Navbar from './Navbar';
 
 const Blog = () => {
@@ -51,6 +53,8 @@ const Blog = () => {
       date: "2023-10-08",
     },
   ];
+
+  const menuItems = ["File", "Edit", "View", "Help"];
   return (
     <>
     <Navbar/>
@@ -61,8 +65,10 @@ const Blog = () => {
         <div id="side panel" className= "flex-1 flex items-center justify-end pr-6">
           <Window className='w-[250px] h-1/2 '>
             <WindowHeader className='flex gap-0.5 flex-row items-center justify-between'>Entries
-            <Button className='w-1 h-1'>
-              <span className="close-icon"></span>
+            <Button 
+              style ={{ width: '25px', height: '25px' }}
+              >
+              <img src={x} alt="Close" className="w-4 h-4" />
             </Button>
             </WindowHeader>
             <WindowContent className=''>
@@ -97,52 +103,45 @@ const Blog = () => {
         <Window className='w-[700px] h-full flex items-center justify-center'>
             <WindowHeader className='flex gap-0.5 flex-row items-center justify-between'>
               Blog
-            <Button className='w-1 h-1'>
-              <span className="close-icon"></span>
+            <div className='flex space-x-1'>
+            <Button
+              style={{ width: '25px', height: '25px' }}>
+              <img src={maximize} alt="Maximize" className="w-4 h-4" />
             </Button>
+            <Button 
+              style ={{ width: '25px', height: '25px' }}
+              >
+              <img src={x} alt="Close" className="w-4 h-4" />
+            </Button>
+            </div>
             </WindowHeader>
 
-            <Toolbar>
-              <Button variant="menu" size="sm">
-                {`File`.split(' ').map((word, index) => (
-                  <span key={index}>
-                    <span style={{ textDecoration: 'underline' }}>{word[0]}</span>
-                    {word.slice(1)}{' '}
-                  </span>
+            <Toolbar
+              //style={{ height: '15px'}}
+            >
+            {menuItems.map((item, index) => (
+                  <Button key={index} variant="menu"
+                    style={{ fontSize: '15px', width: '50px', height: '25px' }}
+                  >
+                    {item.split(' ').map((word, i) => (
+                      <span key={i}>
+                        <span style={{ textDecoration: 'underline' }}>{word[0]}</span>
+                        {word.slice(1)}{' '}
+                      </span>
+                    ))}
+                  </Button>
                 ))}
-              </Button>
-              <Button variant="menu" size="sm">
-              {`Edit`.split(' ').map((word, index) => (
-                  <span key={index}>
-                    <span style={{ textDecoration: 'underline' }}>{word[0]}</span>
-                    {word.slice(1)}{' '}
-                  </span>
-                ))}
-              </Button>
-              <Button variant="menu" size="sm">    {`View`.split(' ').map((word, index) => (
-                  <span key={index}>
-                    <span style={{ textDecoration: 'underline' }}>{word[0]}</span>
-                    {word.slice(1)}{' '}
-                  </span>
-                ))}</Button>
-              <Button variant="menu" size="sm">
-              {`Help`.split(' ').map((word, index) => (
-                  <span key={index}>
-                    <span style={{ textDecoration: 'underline' }}>{word[0]}</span>
-                    {word.slice(1)}{' '}
-                  </span>
-                ))}
-              </Button>
             </Toolbar>
 
             <WindowContent className='flex justify-center items-center'>
               <Frame>
-              <div className='h-[500px] w-[650px] bg-slate-100'>
-              <p>Under construction</p>
-              </div>
+                <div className='h-[500px] w-[650px] bg-slate-100'>
+                  <p>Under construction</p>
+                </div>
               </Frame>
             </WindowContent>
           </Window>
+
         </div>
         <div className = "flex-1 mt-12">
         <Window className='w-3/4 h-5/6'>

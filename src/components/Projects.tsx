@@ -10,6 +10,8 @@ import folder from '@react95/icons'
 import styled from 'styled-components';
 import {FolderOpen, InfoBubble, Pbrush1, ReaderCd, HardwareDiag ,Notepad, Progman20} from '@react95/icons';
 import { Info } from 'lucide-react';
+import x from '../assets/photos/x.png';
+import maximize from '../assets/photos/maximize.png';
 import dpsgd from '../assets/photos/average_percent_difference.png';
 // Styled window component with 3D border effect
 const StyledWindow = styled(Window)`
@@ -148,12 +150,18 @@ const ProjectsPage = () => {
                 padding: '4px 8px'
               }}>
                 <span>#PROJECTS</span>
-                <Button 
-                  style={{ marginLeft: 'auto' }}
-                  onClick={() => setInfoVisible(false)}
-                >
-                  <span>×</span>
-                </Button>
+                <div className='flex space-x-1'>
+            <Button
+              style={{ width: '25px', height: '25px' }}>
+              <img src={maximize} alt="Maximize" className="w-4 h-4" />
+            </Button>
+            <Button 
+              style ={{ width: '25px', height: '25px' }}
+              onClick={() => setInfoVisible(false)}
+              >
+              <img src={x} alt="Close" className="w-4 h-4" />
+            </Button>
+            </div>
               </WindowHeader>
               
               <WindowContent className="bg-white p-4">
@@ -181,12 +189,18 @@ const ProjectsPage = () => {
                   padding: '4px 8px'
                 }}>
                   <span>{project.title}</span>
-                  <Button 
-                    style={{ marginLeft: 'auto' }}
-                    onClick={() => setOpenProject(null)}
-                  >
-                    <span>×</span>
-                  </Button>
+                  <div className='flex space-x-1'>
+            <Button
+              style={{ width: '25px', height: '25px' }}>
+              <img src={maximize} alt="Maximize" className="w-4 h-4" />
+            </Button>
+            <Button 
+              style ={{ width: '25px', height: '25px' }}
+              onClick={() => setOpenProject(null)}
+              >
+              <img src={x} alt="Close" className="w-4 h-4" />
+            </Button>
+            </div>
                 </WindowHeader>
                 
                 <WindowContent className="bg-white p-4">
