@@ -12,6 +12,7 @@ import {FolderOpen, InfoBubble, Pbrush1, ReaderCd, HardwareDiag ,Notepad, Progma
 import { Info } from 'lucide-react';
 import x from '../assets/photos/x.png';
 import maximize from '../assets/photos/maximize.png';
+import oCEANIC from '../assets/photos/oceanic.png';
 import dpsgd from '../assets/photos/average_percent_difference.png';
 // Styled window component with 3D border effect
 const StyledWindow = styled(Window)`
@@ -63,9 +64,9 @@ const ProjectsPage = () => {
     {
       id: 'Project oCEANIC',
       title: 'Project oceanic: Computing Environmental Adaptation and Navigation ​in Island Communities',
-      description: 'This is a full-stack web application built with React and Node.js.',
-      image: '/api/placeholder/500/300', // Replace with your project image
-      link: '#',
+      description: 'A full-stack website that gives users access to a agent based model of Yapese Navigation.',
+      image: oCEANIC, // Replace with your project image
+      link: 'https://project-oceanic.vercel.app/',
       technologies: ['React', 'Node.js', 'Flask', 'Python', 'MERRA-2', 'ARCGIS']
     },
     {
@@ -73,7 +74,7 @@ const ProjectsPage = () => {
       title: 'GPU Architectural Optimizations for Differentially Private Stochastic Gradient Descent ',
       description: 'A machine learning project focused on balancing privacy with performance.',
       image: dpsgd,
-      link: '#',
+      link: 'https://purdue0-my.sharepoint.com/:p:/g/personal/dejiogu_purdue_edu/EWnCmbBHivtJs5_L3IGI9VQBsLatzMohEcjs23jJ7kvC_g?e=e5vzAJ',
       technologies: ['PyTorch', 'Accel-Sim', 'C++']
     },
     {
