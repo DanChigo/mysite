@@ -242,7 +242,6 @@ const Blog = () => {
               <span>Entries</span>
               <Button 
                 style={{ width: '25px', height: '25px' }}
-                onClick={toggleEntriesWindow}
               >
                 <img src={x} alt="Close" className="w-4 h-4" />
               </Button>
