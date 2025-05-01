@@ -65,13 +65,16 @@ const Blog = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [blogPosts, setBlogPosts] = useState([]);
+  const API_URL = process.env.NODE_ENV === 'production' 
+  ? 'https://mysiteserver.onrender.com' // Replace with your actual Render URL
+  : 'http://localhost:5000';
 
 
   useEffect(() => {
     const fetchPosts = async () => {
       try {
         setLoading(true);
-        const response = await fetch('http://localhost:5000/api/posts');
+        const response = await fetch(`${API_URL}/api/posts`);
         if (!response.ok) {
           throw new Error('Failed to fetch posts');
         }
@@ -91,7 +94,7 @@ const Blog = () => {
     // Fetch a single post when selected
     const fetchPostContent = async (slug) => {
       try {
-        const response = await fetch(`http://localhost:5000/api/posts/${slug}`);
+        const response = await fetch(`${API_URL}/api/posts/${slug}`);
         if (!response.ok) {
           throw new Error('Failed to fetch post content');
         }
