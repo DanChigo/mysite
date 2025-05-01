@@ -254,6 +254,7 @@ const Blog = () => {
                   {blogPosts.map((post, index) => (
                     <div key={index} className="mb-0">
                       <MenuListItem 
+                        className='break-words'
                         onClick={() => {
                           fetchPostContent(post.slug);
                           if (isMobile) {
