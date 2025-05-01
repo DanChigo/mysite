@@ -351,7 +351,7 @@ const Blog = () => {
                       />
                     </div>
                   ) : (
-                    <div className="h-full flex flex-col items-center justify-center">
+                    <div className="h-[300px] md:h-[500px] flex flex-col items-center justify-center">
                       <div className="w-16 h-16 mb-4 bg-gray-300 border border-gray-400 rounded-full flex items-center justify-center">
                         <span className="text-gray-600 text-2xl">?</span>
                       </div>
