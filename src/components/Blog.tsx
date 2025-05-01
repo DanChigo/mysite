@@ -62,6 +62,47 @@ const Blog = () => {
     width: typeof window !== 'undefined' ? window.innerWidth : 0,
     height: typeof window !== 'undefined' ? window.innerHeight : 0
   });
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [blogPosts, setBlogPosts] = useState([]);
+
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch('http://localhost:5000/api/posts');
+        if (!response.ok) {
+          throw new Error('Failed to fetch posts');
+        }
+        const data = await response.json();
+        setBlogPosts(data.posts);
+        setLoading(false);
+      } catch (err) {
+        console.error('Error fetching posts:', err);
+        setError(err.message);
+        setLoading(false);
+      }
+    };
+
+    fetchPosts();
+  }, []);
+
+    // Fetch a single post when selected
+    const fetchPostContent = async (slug) => {
+      try {
+        const response = await fetch(`http://localhost:5000/api/posts/${slug}`);
+        if (!response.ok) {
+          throw new Error('Failed to fetch post content');
+        }
+        const data = await response.json();
+        setSelectedPost(data);
+      } catch (err) {
+        console.error('Error fetching post content:', err);
+        setError(err.message);
+      }
+    };
+
 
   // Check screen size on mount and resize
   useEffect(() => {
@@ -91,68 +132,6 @@ const Blog = () => {
     
     return () => window.removeEventListener('resize', handleResize);
   }, [selectedPost]);
-
-  const blogPosts = [ 
-    {
-      title: "Best Foot Forward",
-      content: `
-      Danielle Ejiogu is Computer Science undergraduate at Purdue University.  
-
-We spent more time than I thought we would staring at a foot on our first workday in Hawaii, watching a ti leaf go round and round Torri Law’s index toe as she showed how to make one of the lei’s we’d received the day prior. This demonstration was part of her research on the raw materials essential to Remathau seafaring and daily life: the coconut husk for rope, the tree species best suited for boat making, the kukui nut as a light source and timer, and finally, the versatile ti leaf. Torri, native of the island of Kauai and graduate student in the University of Hawaii at Hilo's Heritage Management program, spoke at a million miles a minute and had hair like a waterfall. She was one of three graduate students guiding us in data validation for our model of traditional Oceanian seafaring.   
-
-[Picture 1: Insert example lei photo] 
-
-[Picture 2: Insert photo of us around Torri]  
-
-Torri’s presentation exemplified what we’d experience at Hilo: a small group of researchers and undergraduates, putting their best foot forward to relay their research to outsiders. Earlier, Shania Tamagyongfal and Jeremy Uowolo—from the islands of Yap and Fais respectively—presented an alternative conceptualization of sawei as more of a reciprocal thaaq (Yapese for relationship) than an economic and hierarchical structure. Although the actual voyaging halted when the islands fell under the dominion of Imperial Japan, Remathau retained their names and therefore their kinship networks, allowing for sawei’s persistence.  
-
-[Figure 3: Insert Image from Tamagyongfal interaction spheres] 
-
-The learning continued through lunch. Bethany Correia, an anthropology undergraduate raised in Hilo, recounted working on a showcase of traditional Hawaiian seafaring culture. She and Torri traded stories about cuisine at home and the pressures of a neocolonial society. Bethany’s white boss rejected a relatives' family fishing net, casting it as “inauthentic” due to its synthetic fibers. In trying to “help” the western gatekeepers had sidelined actual indigenous ways of life that didn't fit their own antiqued views.   
-
-While much of the academic literature portrays navigation as a dead tradition, discussions with titled navigators Tom Raffipiy and Larry Raigetal showed that Remathau navigation is a living practice. A tradition thought to be long gone still attracts many disciples. Tom and Larry had similar origins as navigators, abandoning the western ways of life for the open seas their ancestors had traversed. In our conversations, we got a slice of the minds of men who carry an entire culture on their backs, committing their lives to studying and teaching navigation in schools across Oceania. 
-
-I marveled at the space we were in. For so long, academia has castigated systems of knowledge from sources outside the sphere of power (read: white, rich, western). Now, we are part of a new trend that diverges from that past. It was the first time in my college career that I had been in a room where knowledge from Indigenous sources was not only respected but prioritized. We learned about century-old sea lanes, the importance of a lunar calendar over the dominant Gregorian one, and the best protocols and times for voyages.   
-
-Despite all my technical notes from this day, I feel most compelled to write about the faces in the room. If we were to believe the prevailing academic narrative on the mainland, we’d be led to believe that these people and their ways of life are dead. This endures not for its correctness, but for its convenience: how easy it is to believe that those that have been exploited and harmed by your way of life are no longer in existence. To allow your guilt to die with them. But they live, and you live, and we must work together in paving a future that doesn’t follow the currents of our past. Our communion with the Hilo researchers is imperative to challenging the dominant narratives that pervade mainstream academia. Their work and their very existence serve as a powerful testament to the resilience and continuity of indigenous knowledge systems, and reminds us all that the way to a better future starts with putting your best foot forward.  `,
-      date: "2023-10-05",
-    },
-    {
-      title: "Sixth Post",
-      content: "This is the content of the sixth post.",
-      date: "2023-10-06",
-    },
-    {
-      title: "Seventh Post",
-      content: "This is the content of the seventh post.",
-      date: "2023-10-07",
-    },
-    {
-      title: "Eighth Post",
-      content: "This is the content of the eighth post.",
-      date: "2023-10-08",
-    },
-    {
-      title: "First Post",
-      content: "This is the content of the first post.",
-      date: "2023-10-01",
-    },
-    {
-      title: "Second Post",
-      content: "This is the content of the second post.",
-      date: "2023-10-02",
-    },
-    {
-      title: "Third Post",
-      content: "This is the content of the third post.",
-      date: "2023-10-03",
-    },
-    {
-      title: "Fourth Post",
-      content: "This is the content of the fourth post.",
-      date: "2023-10-04",
-    },
-  ];
 
   const menuItems = ["File", "Edit", "View", "Help"];
   
@@ -274,7 +253,7 @@ Despite all my technical notes from this day, I feel most compelled to write abo
                     <div key={index} className="mb-0">
                       <MenuListItem 
                         onClick={() => {
-                          setSelectedPost(post);
+                          fetchPostContent(post.slug);
                           if (isMobile) {
                             setShowEntriesWindow(false);
                             setShowMainWindow(true);
@@ -283,7 +262,7 @@ Despite all my technical notes from this day, I feel most compelled to write abo
                         style={{
                           width: '100%',
                           padding: '8px 2px',
-                          backgroundColor: selectedPost === post ? '#c3c7cb' : '#d3d3d3',
+                          backgroundColor: selectedPost?.slug === post.slug ? '#c3c7cb' : '#d3d3d3',
                           borderRadius: 0,
                           boxShadow: 'none'
                         }}
@@ -362,7 +341,10 @@ Despite all my technical notes from this day, I feel most compelled to write abo
                     <div className="bg-blue-100 p-4 rounded w-[70%] mx-auto mt-8 border border-gray-400 shadow-md">
                       <h2 className="text-xl font-bold mb-2">{selectedPost.title}</h2>
                       <p className="text-sm mb-4">{selectedPost.date}</p>
-                      <p>{selectedPost.content}.</p>
+                      <div 
+                        dangerouslySetInnerHTML={{ __html: selectedPost.content }}
+                        className="prose prose-sm"
+                      />
                     </div>
                   ) : (
                     <div className="h-full flex flex-col items-center justify-center">
