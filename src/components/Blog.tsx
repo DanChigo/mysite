@@ -271,11 +271,8 @@ const Blog = () => {
                         }}
                       >
                         <div className="flex flex-row w-full">
-                          <div className="text-center text-md font-bold">
+                          <div className="text-center text-balance text-md font-bold">
                             {post.title}
-                          </div>
-                          <div className="text-center">
-                            <span className="text-[10px] text-blue-700">{post.date}</span>
                           </div>
                         </div>
                       </MenuListItem>
