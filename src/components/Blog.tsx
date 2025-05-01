@@ -271,7 +271,7 @@ const Blog = () => {
                         }}
                       >
                         <div className="flex flex-row w-full">
-                          <div className="text-center text-balance text-md font-bold">
+                          <div className="text-center text-ellipsis text-md font-bold">
                             {post.title}
                           </div>
                         </div>
