@@ -269,11 +269,7 @@ const Blog = () => {
                           boxShadow: 'none'
                         }}
                       >
-                        <div className="flex flex-row w-full">
-                          <div className="text-center text-ellipsis text-md font-bold">
-                            {post.title}
-                          </div>
-                        </div>
+                      {post.title}
                       </MenuListItem>
                       {index < blogPosts.length - 1 && <Separator style={{ margin: '2px 0' }} />}
                     </div>
