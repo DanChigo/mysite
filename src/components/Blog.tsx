@@ -338,9 +338,9 @@ const Blog = () => {
             </MenuBar>
 
             <WindowContent className='flex justify-center items-center'>
-              <ScrollView>
+              
               <ContentArea>
-                <div className='h-[300px] md:h-[500px] w-full p-0 relative z-10'>
+                <div className='h-[300px] md:h-[500px] overflow-auto w-full p-0 relative z-10'>
                   {selectedPost ? (
                     <div className="bg-blue-100 p-4 rounded w-[70%] mx-auto mt-8 border border-gray-400 shadow-md">
                       <h2 className="text-xl font-bold mb-2">{selectedPost.title}</h2>
@@ -351,7 +351,7 @@ const Blog = () => {
                       />
                     </div>
                   ) : (
-                    <div className="w-full h-full flex flex-col items-center justify-center">
+                    <div className="h-full flex flex-col items-center justify-center">
                       <div className="w-16 h-16 mb-4 bg-gray-300 border border-gray-400 rounded-full flex items-center justify-center">
                         <span className="text-gray-600 text-2xl">?</span>
                       </div>
@@ -366,7 +366,6 @@ const Blog = () => {
                   )}
                 </div>
               </ContentArea>
-              </ScrollView>
             </WindowContent>
           </StyledWindow>
         )}
