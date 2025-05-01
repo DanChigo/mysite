@@ -338,6 +338,7 @@ const Blog = () => {
             </MenuBar>
 
             <WindowContent className='flex justify-center items-center'>
+              <ScrollView>
               <ContentArea>
                 <div className='h-[300px] md:h-[500px] w-full p-0 relative z-10'>
                   {selectedPost ? (
@@ -365,6 +366,7 @@ const Blog = () => {
                   )}
                 </div>
               </ContentArea>
+              </ScrollView>
             </WindowContent>
           </StyledWindow>
         )}
